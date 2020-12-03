@@ -68,9 +68,9 @@ import com.cg.onlineeyeclinic.service.IReportService;
 		} 
 		
 		//VIEW REPORT BY DATE
-		@GetMapping("/viewAllReports/{date}")
-		public ResponseEntity<List<Report>> viewAllReports(@Valid @PathVariable("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date) throws ReportIdNotFoundException{
-			List<Report> rep = service.viewAllReports(date);
+		@GetMapping("/viewReportByDate/{date}")
+		public ResponseEntity<List<Report>> viewReportByDate(@Valid @PathVariable("date") @DateTimeFormat(pattern="yyyy-MM-dd") LocalDate date) throws ReportIdNotFoundException{
+			List<Report> rep = service.viewReportByDate(date);
 			return new ResponseEntity<List<Report>>(rep,HttpStatus.OK);
 			
 		}	

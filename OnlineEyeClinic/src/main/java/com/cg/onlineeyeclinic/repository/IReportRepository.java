@@ -22,7 +22,7 @@ public interface IReportRepository extends JpaRepository<Report, Integer>{
 	
 	
 	@Query("select rep from Report rep where rep.dateOfReport like ?1")
-	List<Report> viewAllReports(LocalDate date);
+	List<Report> viewReportByDate(LocalDate date);
 
 	
 

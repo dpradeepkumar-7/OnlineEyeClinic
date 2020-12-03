@@ -20,7 +20,7 @@ public interface IReportService {
 	
 	List<Report> viewReportList();
 
-	List<Report> viewAllReports(LocalDate date);
+	List<Report> viewReportByDate(LocalDate date);
 
 
 	

@@ -117,16 +117,16 @@ class ReportServiceTests {
 		Report report = new Report(LocalDate.of(2020, 10, 11), "EyePain", "NotClear", "TwoFeet", "SixFeet");
 		LocalDate date = report.getDateOfReport();
 		List<Report> reportList = new ArrayList<Report>();
-		Report reportOne = new Report(LocalDate.of(2019, 12, 01), "Floaters", "NotMention", "EightFeet", "SixFeet");
-		Report reportTwo = new Report(LocalDate.of(2016, 12, 12), "Floaters", "NotMention", "EightFeet", "SixFeet");
-		Report reportThree = new Report(LocalDate.of(2012, 10, 10), "Floaters", "NotMention", "EightFeet", "SixFeet");
+		Report reportOne = new Report(LocalDate.of(2019, 12, 01), "Floaters", "EyeIrritation", "SixtFeet", "OneFeet");
+		Report reportTwo = new Report(LocalDate.of(2016, 12, 12), "Floaters", "Blur", "EightFeet", "SixFeet");
+		Report reportThree = new Report(LocalDate.of(2012, 10, 10), "Floaters", "Notclear", "sixFeet", "TwoFeet");
 
 		reportList.add(reportOne);
 		reportList.add(reportTwo);
 		reportList.add(reportThree);
 
-		when(reportRepository.viewAllReports(date)).thenReturn(reportList);
-		List<Report> newReportList = reportService.viewAllReports(date);
+		when(reportRepository.viewReportByDate(date)).thenReturn(reportList);
+		List<Report> newReportList = reportService.viewReportByDate(date);
 
 		assertEquals(LocalDate.of(2020, 10, 11), report.getDateOfReport());
 

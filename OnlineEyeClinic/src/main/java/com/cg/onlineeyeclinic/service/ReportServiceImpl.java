@@ -123,8 +123,8 @@ public class ReportServiceImpl implements IReportService {
 	 * 
 	 */
 	@Override
-	public List<Report> viewAllReports(LocalDate date) {
-		List<Report> allReports = repository.viewAllReports(date);
+	public List<Report> viewReportByDate(LocalDate date) {
+		List<Report> allReports = repository.viewReportByDate(date);
 		return allReports;
 	}
 	
