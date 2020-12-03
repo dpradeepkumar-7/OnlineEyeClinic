@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,71 +25,72 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "Report")
 public class Report {
-	public static final String LocalDate = null;
 	/**
 	 * Data Fields
 	 */
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="report_id")
 	private Integer reportId;
-	
-	@Column(name="dateOfReport", length=15)
-	@NotNull(message="Date Of Report should  be Compulsory")
+
+	@Column(name = "dateOfReport", length = 15)
+	@NotNull(message = "Date Of Report should not be Empty")
 	private LocalDate dateOfReport;
-	
-	@Column(name="descriptionOfReport", length=15)
-	@NotEmpty(message="Description  Of Report should be Compulsory")
-	@Size(min=2, max=15)
+
+	@Column(name = "descriptionOfReport", length = 15)
+	@NotEmpty(message = "Description  Of Report should not be Empty")
+	@Size(min = 2, max = 15)
 	private String descriptionOfReport;
-	
-	@Column(name="visualAcuity", length=15)
-	@NotEmpty(message="VisualAcuity Of Report should  be Compulsory")
-	@Size(min=2, max=15)
+
+	@Column(name = "visualAcuity", length = 15)
+	@NotEmpty(message = "VisualAcuity Of Report should not be Empty")
+	@Size(min = 2, max = 15)
 	private String visualAcuity;
-	
 
-	@Column(name="visualAcuityNear", length=15)
-	@NotEmpty(message="VisualAcuityNear Of Report should not be Empty")
-	@Size(min=2, max=15)
+	@Column(name = "visualAcuityNear", length = 15)
+	@NotEmpty(message = "VisualAcuityNear Of Report should not be Empty")
+	@Size(min = 2, max = 15)
 	private String visualAcuityNear;
-	
 
-	@Column(name="visualAcuityDistance", length=15)
-	@NotEmpty(message="VisualAcuityDistance Of Report should not be Empty")
-	@Size(min=2, max=15)
+	@Column(name = "visualAcuityDistance", length = 15)
+	@NotEmpty(message = "VisualAcuityDistance Of Report should not be Empty")
+	@Size(min = 2, max = 15)
 	private String visualAcuityDistance;
+	
+	@Column(name = "patiend_id")
+	@Min(1)
+	private Long patientId;
+	
 	
 	/**
 	 * Default Constructor
 	 */
-	
+
 	public Report() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * Parameterized Constructor
 	 */
 
-	public Report( LocalDate dateOfReport, String descriptionOfReport, String visualAcuity,
-			String visualAcuityNear, String visualAcuityDistance) {
+	public Report(LocalDate dateOfReport, String descriptionOfReport, String visualAcuity, String visualAcuityNear,
+			String visualAcuityDistance, Long patientId) {
 		super();
-		
+
 		this.dateOfReport = dateOfReport;
 		this.descriptionOfReport = descriptionOfReport;
 		this.visualAcuity = visualAcuity;
 		this.visualAcuityNear = visualAcuityNear;
 		this.visualAcuityDistance = visualAcuityDistance;
-		
-		
+		this.patientId = patientId;
+
 	}
-	
+
 	/**
 	 * Getters and setters for All data fields
 	 * 
 	 */
-	
 	public Integer getReportId() {
 		return reportId;
 	}
@@ -137,13 +139,19 @@ public class Report {
 		this.visualAcuityDistance = visualAcuityDistance;
 	}
 	
-@Override
-public String toString() {
-	return "Report [reportId= " + reportId + ", dateofReport=" + dateOfReport + ", descriptionOfReport="
-			+ descriptionOfReport + ", visualAcuity=" + visualAcuity + ", visualAcuityNear=" + visualAcuityNear
-			+ ", visualAcuityDistance=" + visualAcuityDistance +  "]";
-}
+	public Long getPatientId() {
+		return patientId;
+	}
 
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
 
+	@Override
+	public String toString() {
+		return "Report [reportId= " + reportId + ", dateofReport=" + dateOfReport + ", descriptionOfReport="
+				+ descriptionOfReport + ", visualAcuity=" + visualAcuity + ", visualAcuityNear=" + visualAcuityNear
+				+ ", visualAcuityDistance=" + visualAcuityDistance + "]";
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cg.onlineeyeclinic.model.Report;
+import com.cg.onlineeyeclinic.model.Spectacles;
 
 public interface IReportService {
 
@@ -12,12 +13,13 @@ public interface IReportService {
 
 	Report updateReport(Report report);
 
-	Report deleteReport(Integer id);
+	Report deleteReport(Integer reportId);
 
-	Optional<Report> viewReport(Integer id);
+	Optional<Report> viewReportByPatientId(Long patientId);
 
 	List<Report> viewReportList();
+	
+	List<Report> viewReportsByDate(LocalDate date);
 
-	List<Report> viewReportByDate(LocalDate date);
-
+	List<Spectacles> viewSpectaclesList();
 }
