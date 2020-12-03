@@ -34,16 +34,16 @@ public class Report {
 	private Integer reportId;
 	
 	@Column(name="dateOfReport", length=15)
-	@NotNull(message="Date Of Report should  be Compulsory")
+	@NotNull(message="Date Of Report should not be Empty")
 	private LocalDate dateOfReport;
 	
 	@Column(name="descriptionOfReport", length=15)
-	@NotEmpty(message="Description  Of Report should be Compulsory")
+	@NotEmpty(message="Description  Of Report should not be Empty")
 	@Size(min=2, max=15)
 	private String descriptionOfReport;
 	
 	@Column(name="visualAcuity", length=15)
-	@NotEmpty(message="VisualAcuity Of Report should  be Compulsory")
+	@NotEmpty(message="VisualAcuity Of Report should not be Empty")
 	@Size(min=2, max=15)
 	private String visualAcuity;
 	
@@ -58,6 +58,7 @@ public class Report {
 	@NotEmpty(message="VisualAcuityDistance Of Report should not be Empty")
 	@Size(min=2, max=15)
 	private String visualAcuityDistance;
+	
 	
 	/**
 	 * Default Constructor
@@ -81,14 +82,11 @@ public class Report {
 		this.visualAcuityNear = visualAcuityNear;
 		this.visualAcuityDistance = visualAcuityDistance;
 		
-		
 	}
-	
 	/**
 	 * Getters and setters for All data fields
 	 * 
 	 */
-	
 	public Integer getReportId() {
 		return reportId;
 	}

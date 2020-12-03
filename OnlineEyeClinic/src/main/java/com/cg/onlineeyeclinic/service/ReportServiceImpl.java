@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.onlineeyeclinic.exception.ReportIdNotFoundException;
 import com.cg.onlineeyeclinic.model.Report;
+import com.cg.onlineeyeclinic.model.Spectacles;
 import com.cg.onlineeyeclinic.repository.IReportRepository;
 
 /**
@@ -126,6 +127,7 @@ public class ReportServiceImpl implements IReportService {
 		List<Report> allReports = repository.viewReportByDate(date);
 		return allReports;
 	}
+	
 	
 
 }

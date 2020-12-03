@@ -19,6 +19,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.cg.onlineeyeclinic.exception.ReportIdNotFoundException;
 import com.cg.onlineeyeclinic.model.Report;
 import com.cg.onlineeyeclinic.repository.IReportRepository;
 import com.cg.onlineeyeclinic.service.ReportServiceImpl;
@@ -78,7 +79,7 @@ class ReportServiceTests {
 	}
 
 	@Test
-	public void viewReportTest() {
+	public void viewReportTest()  {
 		Report report = new Report(LocalDate.of(2013, 02, 01), "EyeInfection", "Mirror", "NoRange", "NotClear");
 		Integer reportId = report.getReportId();
 		Optional<Report> reports = Optional.of(report);
@@ -112,7 +113,7 @@ class ReportServiceTests {
 	}
 
 	@Test
-	public void viewReportByDateTest() {
+	public void viewAllReportsTest() {
 		Report report = new Report(LocalDate.of(2020, 10, 11), "EyePain", "NotClear", "TwoFeet", "SixFeet");
 		LocalDate date = report.getDateOfReport();
 		List<Report> reportList = new ArrayList<Report>();
@@ -130,5 +131,4 @@ class ReportServiceTests {
 		assertEquals(LocalDate.of(2020, 10, 11), report.getDateOfReport());
 
 	}
-
 }
